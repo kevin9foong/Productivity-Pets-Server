@@ -1,21 +1,23 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
-const Schema = mongoose.Schema;
+export interface IUser extends Document {
+  googleId: string;
+  name: string;
+  avatar?: string;
+}
 
-const userSchema = new Schema({
-  name: String,
-  //   username: String,
+const userSchema: Schema = new Schema({
+  googleId: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
   avatar: String
 });
 
-userSchema.methods.saveGoogleUser = function (googleProfile) {};
-
-export const mapGoogleProfileToUser = (googleProfile) => {
-  return {
-    name: googleProfile.displayName,
-    // username: username,
-    avatar: googleProfile.image.url
-  };
-};
-
-export default mongoose.model('User', userSchema);
+const User: Model<IUser> = mongoose.model('User', userSchema);
+export default User;

@@ -32,7 +32,9 @@ app.use(passport.initialize());
 // app.use(passport.session());
 
 app.use('/auth', authRoutes);
-app.get('/', (req: any, res) => res.send('<h1>Dummy</h1>'));
+app.get('/', passport.authenticate('jwt'), (req: any, res) =>
+  res.send('<h1>Dummy</h1>')
+);
 
 // application routes
 

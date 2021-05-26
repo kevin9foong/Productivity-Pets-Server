@@ -25,7 +25,7 @@ router.get('/google', getGoogleOauthSignIn);
 //   which, in this example, will redirect the user to the home page.
 router.get(
   '/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
+  passport.authenticate('google', { failureRedirect: '/auth/google' }),
   getGoogleOauthCallback
 );
 
