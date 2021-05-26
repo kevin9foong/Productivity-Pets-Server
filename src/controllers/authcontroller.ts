@@ -10,8 +10,8 @@ export const getGoogleOauthSignIn = passport.authenticate('google', {
   scope: ['profile']
 });
 
-// return JWT to frontend
+// TODO: use JWT in the future for frontend
+// when login is successful, return JWT.
 export const getGoogleOauthCallback = (req: Request, res: Response) => {
-  // when login is successful, return JWT.
   res.redirect('/');
 };

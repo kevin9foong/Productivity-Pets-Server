@@ -1,5 +1,4 @@
 import { Strategy as GoogleStrategy, Profile } from 'passport-google-oauth20';
-import { PassportStatic } from 'passport';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -28,6 +27,4 @@ const mapGoogleProfileToUser = (googleProfile: Profile) => {
   };
 };
 
-export default (passport: PassportStatic) => {
-  passport.use(googleStrategy);
-};
+export default googleStrategy;

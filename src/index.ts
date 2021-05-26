@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/auth';
 import passport from 'passport';
 
-import googleOauthPassport from './config/passportgoogleoauth20';
+import passportConfig from './config/passport';
 
 dotenv.config();
 
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // passport auth
-googleOauthPassport(passport);
+passportConfig(passport);
 passport.serializeUser((user: any, done) => {
   done(null, user);
 });
@@ -28,7 +28,8 @@ passport.deserializeUser((user: any, done) => {
   done(null, user);
 });
 app.use(passport.initialize());
-app.use(passport.session());
+// TODO: remove session use
+// app.use(passport.session());
 
 app.use('/auth', authRoutes);
 app.get('/', (req: any, res) => res.send('<h1>Dummy</h1>'));
