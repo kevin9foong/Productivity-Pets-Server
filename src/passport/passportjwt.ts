@@ -13,10 +13,11 @@ const options = {
   //   audience
 };
 
+// strategy used to verify issued JWT token
 // TODO: WIP on this jwt strat
 const jwtStrategy = new JwtStrategy(options, (payload, done) => {
   // payload.sub stores the mongodb user _id information
-  const user = User.findById(payload.sub);
+  const user = User.findOne({ googleId: payload.sub });
   if (user) {
     return done(null, user);
   } else {

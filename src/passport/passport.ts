@@ -1,8 +1,8 @@
 import { PassportStatic } from 'passport';
-import googleStrategy from './passportgoogleoauth20';
+import bearerStrategy from './passportbearer';
 import jwtStrategy from './passportjwt';
 
 export default (passport: PassportStatic) => {
-  passport.use(googleStrategy);
+  passport.use(bearerStrategy);
   passport.use(jwtStrategy);
 };

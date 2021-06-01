@@ -1,13 +1,10 @@
 import { Router } from 'express';
 import passport from 'passport';
-
-import {
-  getAuthJwt
-} from '../controllers/authcontroller';
+import { getAuthJwt } from '../controllers/authcontroller';
 
 const router = Router();
 
-router.post('/auth', passport.authenticate('bearer', { session: false }),
-  getAuthJwt);
+// validate Google access token and return JWT if valid.
+router.get('/google', passport.authenticate('bearer', { session: false }), getAuthJwt);
 
 export default router;

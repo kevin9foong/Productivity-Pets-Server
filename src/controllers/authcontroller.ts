@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { IUser } from '../model/user';
 
-import { generateJwt } from '../service/authservice';
+import { generateJwt } from '../auth/jwt';
 
 export const getAuthJwt = (req: Request, res: Response) => {
   if (req.user) {
