@@ -8,7 +8,7 @@ import authRoutes from './routes/auth';
 import passport from 'passport';
 
 import passportConfig from './passport/passport';
-import corsOptions from './config/corsconfig';
+// import corsOptions from './config/corsconfig';
 
 dotenv.config();
 
@@ -35,9 +35,7 @@ passportConfig(passport);
 app.use(passport.initialize());
 
 app.use('/auth', authRoutes);
-// app.get('/', passport.authenticate('jwt'), (req: any, res) =>
-//   res.send('<h1>Dummy</h1>')
-// );
+app.get('/', (req, res) => res.send('<h1>Deployed on Heroku</h1>'));
 
 // application routes
 
@@ -47,5 +45,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  .then(() => app.listen(3000))
+  .then(() => {
+    app.listen(process.env.PORT || 3000);
+  })
   .catch((err) => console.log(err));
