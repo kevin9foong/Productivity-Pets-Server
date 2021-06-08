@@ -9,4 +9,6 @@ services:
     container_name: orbital-server
     ports:
       - "3000:3000"
+    volumes:
+      - ./:/app
 
