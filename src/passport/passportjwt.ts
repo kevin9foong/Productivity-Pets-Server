@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import User from '../model/user';
 dotenv.config();
 
+// need to add access + refresh token
 const SYMMETRIC_JWT_SECRET = process.env.SYMMETRIC_JWT_SECRET;
 
 const options = {

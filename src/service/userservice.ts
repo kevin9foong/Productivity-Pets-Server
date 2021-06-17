@@ -1,5 +1,9 @@
 import User from '../model/user';
-import { IUserDto } from './usertypes';
+export interface IUserDto {
+  googleId: string;
+  name: string;
+  avatar?: string;
+}
 
 export const createUser = (user: IUserDto) => {
   const userModel = new User({
