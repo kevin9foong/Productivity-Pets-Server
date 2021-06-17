@@ -22,7 +22,7 @@ const bearerStrategy = new BearerStrategy((token, done) => {
             avatar: googleUser.data.picture
           });
           newUser.save().then(
-            user => done(null, user)
+            (user: IUser) => done(null, user)
           );
         }
       } else {

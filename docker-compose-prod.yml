@@ -1,0 +1,11 @@
+version: "3.8"
+
+services: 
+  server:
+    image: kevin9foong/orbital-server:prod
+    build: 
+      context: .
+      target: prod
+    container_name: orbital-server
+    restart: always
+

@@ -14,7 +14,8 @@ dotenv.config();
 const MONGODB_CONNECTION_KEY = process.env.MONGODB_CONNECTION_KEY!;
 
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
+// app.use(cors());
 // body-parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,6 +26,7 @@ passportConfig(passport);
 app.use(passport.initialize());
 
 app.use('/auth', authRoutes);
+app.get('/', (req, res) => res.send('<h1>Deployed on Heroku</h1>'));
 
 // application routes
 
@@ -34,5 +36,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  .then(() => app.listen(3000))
+  .then(() => {
+    app.listen(process.env.PORT || 3000);
+  })
   .catch((err) => console.log(err));
