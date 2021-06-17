@@ -6,7 +6,7 @@ export interface IUser {
   avatar?: string;
 }
 
-const userSchema: Schema = new Schema({
+const userSchema = new Schema<IUser>({
   googleId: {
     type: String,
     unique: true,
